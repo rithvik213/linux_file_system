@@ -1,0 +1,8 @@
+obj-m += filesystem_module.o
+filesystem_module-y = filesystem_main.o filesystem_kernel.o 
+
+create_kernel_module:
+	make -C /lib/modules/$(shell uname -r)/build M=$(PWD) modules
+
+clean:
+	make -C /lib/modules/$(shell uname -r)/build M=$(PWD) clean
